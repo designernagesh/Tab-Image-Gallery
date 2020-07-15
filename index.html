@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tab Image Gallery</title>  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@700;800;900&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="d-flex mt-4 justify-content-center">
+  <div class="container text-center">
+    <h1 class="display-3 text-danger">Tab Image Gallery</h1>
+    <p>Click on the Thumbnails and Full-view the Image</p>
+      <div class="row mb-4">
+        <div class="col-sm-12 text-danger mb-4 imgThumbnails">
+          <img src="images/one.jpg" class="imgThumbnail" />
+          <img src="images/two.jpg" class="imgThumbnail" />
+          <img src="images/three.jpg" class="imgThumbnail" />
+          <img src="images/four.jpg" class="imgThumbnail" />
+          <img src="images/five.jpg" class="imgThumbnail" />
+          <img src="images/six.jpg" class="imgThumbnail" />          
+        </div>
+
+        <div class="col-sm-12 text-center imgDisplay">
+          <a href="" class="btnClose"> X </a>
+          <img src="images/one.jpg" class="imgFullView" />
+        </div>        
+      </div>
+   </div>
+  </div>
+  <script>
+    let imgDisplay = document.querySelector('.imgDisplay');
+    let imgFullView = document.querySelector('.imgFullView');
+    let imgThumbnail = document.querySelectorAll('.imgThumbnail');
+    let btnClose = document.querySelector('.btnClose');
+
+    btnClose.addEventListener('click', function(e){
+      e.preventDefault();
+    })
+
+    imgFullView.parentElement.style.display = 'none';
+
+    imgThumbnail.forEach( img => {
+      img.addEventListener('click', function(){
+        imgFullView.parentElement.style.display = 'block';
+        imgFullView.src = this.src;
+        btnClose.addEventListener('click', function(){
+          this.parentElement.style.display = 'none';
+        })
+      })
+    })
+  </script>
+</body>
+</html>
